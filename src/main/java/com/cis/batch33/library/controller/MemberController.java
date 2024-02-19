@@ -5,6 +5,9 @@ import com.cis.batch33.library.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/member")
 public class MemberController {
@@ -12,13 +15,23 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping
-    public Member getMember(Long memberId){
-        return memberService.getMember(memberId);
+    public ArrayList<Member> getMember(){
+        return memberService.getMembers();
     }
 
     // create a member
     @PostMapping
     public Member createMember(@RequestBody  Member member){
         return memberService.createMember(member);
+    }
+
+    @PutMapping
+    public Member updateMember(@RequestBody Member member){
+            return memberService.updateMember(member);
+    }
+
+    @DeleteMapping
+    public Member deleteMember(Long memberId){
+        return memberService.deleteMember(memberId);
     }
 }
