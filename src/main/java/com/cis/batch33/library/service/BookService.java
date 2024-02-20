@@ -16,7 +16,7 @@ public class BookService {
     public Book createBook(Book book) {
 
         // call the database
-        Long bookId = new Random().nextLong();
+        Long bookId = Math.abs(new Random().nextLong());
         book.setBookId(bookId);
         bookMap.put(bookId, book);
         return book;

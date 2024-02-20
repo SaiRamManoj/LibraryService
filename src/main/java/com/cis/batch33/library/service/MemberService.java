@@ -13,7 +13,7 @@ public class MemberService {
     public Member createMember(Member member){
 
         // call the database
-        Long memberId = new Random().nextLong();
+        Long memberId = Math.abs(new Random().nextLong());
         member.setMemberId(memberId);
         memberMap.put(memberId, member);
         return  member;
